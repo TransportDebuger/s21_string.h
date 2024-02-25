@@ -1,9 +1,12 @@
 #include "s21_string.h"
+
 #include <stdlib.h>
 
-int s21_strlen(const char *str) {
+size_t s21_strlen(const char *str) {
     char *p = str;
-    int len = 0;
+    size_t arrlen = sizeof(str) / sizeof(str[0]);
+    size_t len = 0;
+    
     while (*p != '\0') {
         p++;
         len++;
@@ -11,7 +14,7 @@ int s21_strlen(const char *str) {
     return len;
 }
 
-int s21_strcmp(const char *source1; const char *source2) {
+int s21_strcmp(const char *source1, const char *source2) {
     int i = 0, result = 1;
     while (i < s21_strlen(source1) && i < s21_strlen(source2)) {
         if (source1[i] != source2[i]) {
@@ -23,18 +26,18 @@ int s21_strcmp(const char *source1; const char *source2) {
     return result;
 }
 
-char* s21_strcpy(char* destination; const char* source) {
+char* s21_strcpy(char* destination, const char* source) {
     const int n = s21_strlen(source);
     char *result = malloc((n + 1) * sizeof(char));
 
-    while (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {
         result[i] = source[i];
     }
     free(destination);
     return result;
 }
 
-char *s21_strcat(char* destination; const char* source) {
+char *s21_strcat(char* destination, const char* source) {
     int n = s21_strlen(destination) + s21_strlen(source);
     char *result = malloc((n + 1) * sizeof(char));
     int i = 0;
